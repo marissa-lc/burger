@@ -11,12 +11,3 @@ CREATE TABLE burgers
 	devoured BOOLEAN DEFAULT false,
 	PRIMARY KEY (id)
 );
-
-
-USE burgers_db;
-
-INSERT INTO burgers (burger_name, devoured) 
-VALUES 
-("veggie", false),
-("mushroom", false),
-("salmon", false);

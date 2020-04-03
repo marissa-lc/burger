@@ -11,8 +11,8 @@ var burgers = {
         cb(res);
       });
     },
-    update: function(booleanValue, condition, cb) {
-      orm.update("burgers", booleanValue, condition, function(res) {
+    update: function(objColVals, condition, cb) {
+      orm.update("burgers", objColVals, condition, function(res) {
         cb(res);
       });
     },

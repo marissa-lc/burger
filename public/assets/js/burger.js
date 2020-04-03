@@ -12,14 +12,14 @@ $(function() {
       );
     });
   
-    $(".create-burger").on("submit", function(event) {
+    $(".create-form").on("submit", function(event) {
       event.preventDefault();
   
       var newBurger = {
         name: $("#burger").val().trim(),
       };
   
-      $.ajax("/api/cats", {
+      $.ajax("/api/burgers", {
         type: "POST",
         data: newBurger
       }).then(function() {
