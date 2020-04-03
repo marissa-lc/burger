@@ -1,34 +1,45 @@
-<h1>Eat That Burger!</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Eat That Burger</h1>
+    <p class="lead"></p>
+  </div>
+</div>
 
-<h2>!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+<div class="card" style="width: 18rem;">
+  <img src="" class="card-img-top" alt="...">
+  <div class="card-body">
+    <span>
+      <ul>
+      {{#each burger}}
+      {{#unless this.devoured}}
+      {{> burgers/burger-block devoured = true}}
+      {{/unless}}
+      {{/each}}
+      </ul>
+    </span>
   </div>
 
-<!--look into default values for devoured column-->
 
-  <button type="submit">Add Burger</button>
-</form>
+<div class="card" style="width: 18rem;"> 
+  <h2>ADD A BURGER</h2>
+    <form class="create-form">
+      <div class="form-group">
+        <label for="ca">What kind of Burger do you want?:</label>
+        <input type="text" id="burger" name="name">
+      </div>
+  <button type="submit">ADD BURGER</button>
+    </form>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <span>
+      <ul>
+      {{#each burger}}
+      {{#if this.devoured}}
+      {{> burgers/burger-block devoured = false}}
+      {{/if}}
+      {{/each}}
+      </ul>
+    </span>
+  </div>
