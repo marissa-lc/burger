@@ -1,5 +1,7 @@
 var connection = require("../config/connection.js");
 
+
+
 var orm = {
   all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
@@ -11,14 +13,7 @@ var orm = {
     });
   },
   create: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
-
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
+    var queryString = "INSERT INTO " + table + "(" + cols + ")" + "VALUES (?)";
 
     console.log(queryString);
 
