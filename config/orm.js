@@ -13,7 +13,7 @@ var orm = {
     });
   },
   create: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table + "(" + cols + ")" + "VALUES (?)";
+    var queryString = "INSERT INTO " + table + " ( " + cols + " ) " + " VALUES (?)";
 
     console.log(queryString);
 
@@ -21,17 +21,16 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
   update: function(table, booleanValue, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET DEVOURED";
-    queryString += objToSql(booleanValue);
-    queryString += " WHERE ";
-    queryString += condition;
+    var queryString = "UPDATE " + 
+    table + 
+    " SET devoured=" +
+    booleanValue +
+    " WHERE " + 
+    condition;
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {

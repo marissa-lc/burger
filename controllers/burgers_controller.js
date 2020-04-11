@@ -12,21 +12,19 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.create(
-  [
-    "burger_name"
-  ], 
-  [
-    req.body.name
-  ], 
-  function(result) {
-    res.json({ id: result.insertId });
+router.post("/api/burgers/:name", function(req, res) {
+  console.log(req.body);
+  burger.create('burger_name', req.body.name, function(result) {
+    if ( result ) {
+      return res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
   });
 });
 
 router.put("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  var condition = "ID = " + req.params.id;
   burger.update(req.body.devoured, condition, function(result) {
     if (result.changedRows == 0) {
       return res.status(404).end();

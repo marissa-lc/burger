@@ -2,6 +2,7 @@ $(function() {
     $(".devour").on("click", function(event) {
       var id = $(this).data("id");
       var devoured = $(this).data("devoured");
+      console.log(id, devoured);
   
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
@@ -12,20 +13,18 @@ $(function() {
       );
     });
   
-    $(".create-form").on("submit", function(event) {
+    $(".create-burger").on("submit", function(event) {
       event.preventDefault();
   
-      var newBurger = {
-        name: $("#burger").val().trim(),
-      };
-  
-      $.ajax("/api/burgers", {
+      var burgerName = $("#burger").val().trim();
+ 
+      $.ajax("/api/burgers/" + burgerName, {
         type: "POST",
-        data: newBurger
+        data: { name: burgerName },
       }).then(function() {
           location.reload();
         }
       );
     });
- });
+  });
   
